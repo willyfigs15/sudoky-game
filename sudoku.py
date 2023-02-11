@@ -5,7 +5,7 @@ pygame.init()
 
 # Define colors
 BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+WHITE_ICE = (153, 255, 255)
 
 # Define cell size and margins
 CELL_SIZE = 50
@@ -36,7 +36,7 @@ def draw_puzzle(puzzle):
         for col in range(9):
             value = puzzle[row][col]
             if value != 0:
-                text = font.render(str(value), True, BLACK, WHITE)
+                text = font.render(str(value), True, BLACK, WHITE_ICE)
                 x = col * CELL_SIZE + (col + 1) * MARGIN
                 y = row * CELL_SIZE + (row + 1) * MARGIN
                 screen.blit(text, [x + CELL_SIZE // 2 - text.get_width() // 2, y + CELL_SIZE // 2 - text.get_height() // 2])
@@ -103,7 +103,7 @@ def play_game(puzzle):
                 if selected is not None and event.unicode.isdigit() and int(event.unicode) >= 1 and int(event.unicode) <= 9:
                     puzzle[selected[0]][selected[1]] = int(event.unicode)
                     selected = None
-        screen.fill(WHITE)
+        screen.fill(WHITE_ICE)
         draw_grid()
         draw_puzzle(puzzle)
         if selected is not None:
